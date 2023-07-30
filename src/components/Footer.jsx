@@ -1,11 +1,11 @@
 import { FaFacebook, FaTwitter, FaTwitch } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <div className="bg-black  text-gray-300 px-40 py-20">
+    <div className="bg-black  text-gray-300 px-20 md:px-40 py-20">
       <div className="grid lg:grid-cols-5 md:grid-cols-2 justify-between items-start  gap-5">
         <div>
           <h1 className="text-2xl font-bold">JobClub</h1>
-          <p className="className= my-5">
+          <p className="className my-5">
             There are many variations of passages of Lorem Ipsum , but the
             majority have suffered alteration in some form.
           </p>
