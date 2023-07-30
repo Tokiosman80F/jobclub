@@ -29,12 +29,6 @@ const Header = () => {
       title: "Statistic",
       showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
-    {
-      name: "Home",
-      to: "/",
-      title: "Home",
-      showActive: ({ isActive }) => (isActive ? "active" : "default"),
-    },
   ];
   console.log(navItems);
   return (
@@ -80,7 +74,7 @@ const Header = () => {
             </ul>
           )}
 
-          <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white py-2 px-3 font-bold rounded-md">
+          <button className="btn-primary">
             <NavLink>Start Applying</NavLink>
           </button>
         </div>
