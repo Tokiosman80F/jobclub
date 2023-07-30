@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import { FaBars } from "react-icons/fa6";
+import { GrClose } from "react-icons/gr";
 const Header = () => {
+  const [nav, setNav] = useState(false);
+  const navItems = [
+    {
+      name: "Home",
+      to: "/",
+      title: "Home",
+      showActive: ({ isActive }) => (isActive ? "active" : "default"),
+    },
+    {
+      name: "Job Applied",
+      to: "/jobApplied",
+      title: "Job Applied",
+      showActive: ({ isActive }) => (isActive ? "active" : "default"),
+    },
+    {
+      name: "Blogs",
+      to: "/blog",
+      title: "Blogs",
+      showActive: ({ isActive }) => (isActive ? "active" : "default"),
+    },
+    {
+      name: "Statistics",
+      to: "/statistics",
+      title: "Statistic",
+      showActive: ({ isActive }) => (isActive ? "active" : "default"),
+    },
+    {
+      name: "Home",
+      to: "/",
+      title: "Home",
+      showActive: ({ isActive }) => (isActive ? "active" : "default"),
+    },
+  ];
+  console.log(navItems);
   return (
     <>
       <div className="p-4 mx-auto">
@@ -11,43 +45,41 @@ const Header = () => {
             JobClub
           </Link>
           <ul className="md:flex gap-5 hidden">
-            <li>
-              <NavLink
-                to="/"
-                title="Home"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/jobapplied"
-                title="Job Applied"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Job Applied
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                title="Blog"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Blog
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="statistics"
-                title="Statistics"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Statistics
-              </NavLink>
-            </li>
+            {navItems.map((item, id) => (
+              <li key={id}>
+                <NavLink
+                  to={item.to}
+                  title={item.name}
+                  className={item.showActive}
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
+
+          <div
+            onClick={() => setNav(!nav)}
+            className="cursor-pointer md:hidden"
+          >
+            {nav ? <GrClose /> : <FaBars />}
+          </div>
+          {nav && (
+            <ul className="flex flex-col gap-3 justify-center items-center absolute top-16 left-50 w-full h-1/3 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white ">
+              {navItems.map((item, id) => (
+                <li key={id}>
+                  <NavLink
+                    to={item.to}
+                    title={item.name}
+                    className={item.showActive}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )}
+
           <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white py-2 px-3 font-bold rounded-md">
             <NavLink>Start Applying</NavLink>
           </button>
