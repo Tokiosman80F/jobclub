@@ -1,7 +1,23 @@
+import { useContext, useState } from "react";
+import { JobCircularContext } from "../../App";
+
+import JobCard from "./JobCard";
+
 const FeaturedJob = () => {
+  const [viewAll, setViewAll] = useState(true);
+  const jobDatas = useContext(JobCircularContext);
+  console.log("Job data from FJ", jobDatas);
+  const handleViewAll = () => {
+    if (viewAll) {
+      jobDatas.slice(0, 4);
+    } else {
+      jobDatas.slice();
+    }
+    setViewAll(!viewAll);
+  };
   return (
     <div className="my-10">
-      <div className="text-center">
+      <div className="text-center mb-5">
         <h1 className="text-4xl md:text-6xl text-center my-14 font-semibold">
           Featured Job
         </h1>
@@ -9,6 +25,28 @@ const FeaturedJob = () => {
           Explore thousands of job opportunities with all the information you
           need. Its your future
         </p>
+      </div>
+      {/* ------JOB Card--------- */}
+      <div className="grid gap-8  mb-8 md:grid-cols-2 ">
+        {viewAll
+          ? jobDatas
+              .slice(0, 4)
+              .map((jobData) => (
+                <JobCard key={jobData.id} jobData={jobData}></JobCard>
+              ))
+          : jobDatas.map((jobData) => (
+              <JobCard key={jobData.id} jobData={jobData}></JobCard>
+            ))}
+      </div>
+      <div className="text-center">
+        <button
+          className="btn-primary "
+          onClick={() => {
+            handleViewAll();
+          }}
+        >
+          View All
+        </button>
       </div>
     </div>
   );

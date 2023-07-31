@@ -4,9 +4,13 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { createContext } from "react";
 
-const JobCircularContext = createContext([]);
+export const JobCircularContext = createContext([]);
+
 function App() {
   const jobCircularData = useLoaderData();
+
+  // console.log(jobCircularData);
+
   return (
     <JobCircularContext.Provider value={jobCircularData}>
       <Header></Header>

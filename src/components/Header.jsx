@@ -30,7 +30,7 @@ const Header = () => {
       showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
   ];
-  console.log(navItems);
+  // console.log(navItems);
   return (
     <>
       <div className="p-4 mx-auto">
