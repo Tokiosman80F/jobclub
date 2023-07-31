@@ -13,6 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPages></ErrorPages>,
+    loader: () => fetch("jobCircular.json"),
     children: [
       {
         path: "/",
