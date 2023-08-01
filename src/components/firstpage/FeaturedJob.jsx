@@ -8,13 +8,9 @@ const FeaturedJob = () => {
   const jobDatas = useContext(JobCircularContext);
   console.log("Job data from FJ", jobDatas);
   const handleViewAll = () => {
-    if (viewAll) {
-      jobDatas.slice(0, 4);
-    } else {
-      jobDatas.slice();
-    }
     setViewAll(!viewAll);
   };
+
   return (
     <div className="my-10">
       <div className="text-center mb-5">
@@ -28,15 +24,9 @@ const FeaturedJob = () => {
       </div>
       {/* ------JOB Card--------- */}
       <div className="grid gap-8  mb-8 md:grid-cols-2 ">
-        {viewAll
-          ? jobDatas
-              .slice(0, 4)
-              .map((jobData) => (
-                <JobCard key={jobData.id} jobData={jobData}></JobCard>
-              ))
-          : jobDatas.map((jobData) => (
-              <JobCard key={jobData.id} jobData={jobData}></JobCard>
-            ))}
+        {jobDatas.slice(0, viewAll ? 4 : 10).map((jobData) => (
+          <JobCard key={jobData.id} jobData={jobData}></JobCard>
+        ))}
       </div>
       <div className="text-center">
         <button
@@ -45,7 +35,7 @@ const FeaturedJob = () => {
             handleViewAll();
           }}
         >
-          View All
+          {viewAll ? "View All" : "View Less"}
         </button>
       </div>
     </div>

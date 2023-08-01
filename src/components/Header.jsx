@@ -9,25 +9,21 @@ const Header = () => {
       name: "Home",
       to: "/",
       title: "Home",
-      showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
     {
       name: "Job Applied",
       to: "/jobApplied",
       title: "Job Applied",
-      showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
     {
       name: "Blogs",
       to: "/blog",
       title: "Blogs",
-      showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
     {
       name: "Statistics",
       to: "/statistic",
       title: "Statistic",
-      showActive: ({ isActive }) => (isActive ? "active" : "default"),
     },
   ];
   // console.log(navItems);
@@ -44,7 +40,9 @@ const Header = () => {
                 <NavLink
                   to={item.to}
                   title={item.name}
-                  className={item.showActive}
+                  className={({ isActive }) =>
+                    isActive ? "text-purple-400" : "default"
+                  }
                 >
                   {item.name}
                 </NavLink>

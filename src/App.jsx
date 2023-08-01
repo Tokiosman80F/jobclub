@@ -14,7 +14,7 @@ function App() {
   return (
     <JobCircularContext.Provider value={jobCircularData}>
       <Header></Header>
-      <div className="min-h-[calc(100vh)]">
+      <div className="min-h-[calc(100vh)] md:px-20 lg:px-48">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
