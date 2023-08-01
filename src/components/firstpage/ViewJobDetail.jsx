@@ -1,10 +1,13 @@
 import { FaPhoneAlt, FaRegEnvelope, FaCalendarWeek } from "react-icons/fa";
 import { FaLocationPinLock, FaSackDollar } from "react-icons/fa6";
+import { addToDb, getBookmarks } from "../../utilities/localStorageDB";
+import { toast } from "react-hot-toast";
 const ViewJobDetail = () => {
   let storedInfo = localStorage.getItem("viewBookDetail");
   storedInfo = JSON.parse(storedInfo);
-
+  console.log(storedInfo);
   const {
+    id,
     title,
     salary,
     location,
@@ -15,7 +18,17 @@ const ViewJobDetail = () => {
     phone,
     email,
   } = storedInfo;
-  console.log(storedInfo);
+
+  const handleApply = (id) => {
+    const getDataFromLS = getBookmarks();
+    const exist = getDataFromLS.find((obj) => obj.id === id);
+    if (!exist) {
+      addToDb(id, storedInfo);
+      toast.success("Added");
+    } else {
+      toast.error("Already Added");
+    }
+  };
   return (
     <div className="my-10 px-5 md:px-0">
       <section>
@@ -78,7 +91,9 @@ const ViewJobDetail = () => {
               <span className="font-bold">Address:</span>
               <span className="text-gray-500">{location}</span>
             </div>
-            <button className="btn-primary">Apply Now</button>
+            <button className="btn-primary" onClick={() => handleApply(id)}>
+              Apply Now
+            </button>
           </div>
         </div>
       </section>

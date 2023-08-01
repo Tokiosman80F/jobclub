@@ -3,7 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { createContext } from "react";
-
+import { Toaster } from "react-hot-toast";
 export const JobCircularContext = createContext([]);
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
+      <Toaster />
     </JobCircularContext.Provider>
   );
 }

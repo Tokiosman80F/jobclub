@@ -73,7 +73,7 @@ const Header = () => {
           )}
 
           <button className="btn-primary">
-            <NavLink>Start Applying</NavLink>
+            <NavLink to="/">Start Applying</NavLink>
           </button>
         </div>
       </div>
