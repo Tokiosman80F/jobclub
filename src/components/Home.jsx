@@ -4,7 +4,7 @@ import LandingPage from "./firstpage/LandingPage";
 
 const Home = () => {
   return (
-    <div >
+    <div>
       <LandingPage></LandingPage>
       <JobCatagory></JobCatagory>
       <FeaturedJob></FeaturedJob>

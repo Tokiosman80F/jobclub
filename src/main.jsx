@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     loader: () => fetch("jobCircular.json"),
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home></Home>,
       },
       {
