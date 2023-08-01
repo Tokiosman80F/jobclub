@@ -1,13 +1,11 @@
 import { FaLocationDot, FaDollarSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-
 const JobCard = ({ jobData }) => {
-
   const { id, image, title, company, workType, workingTime, location, salary } =
     jobData;
   const handleViewBookDetail = () => {
-  localStorage.setItem("viewBookDetail",JSON.stringify(jobData))
+    localStorage.setItem("viewBookDetail", JSON.stringify(jobData));
   };
 
   return (
@@ -32,10 +30,7 @@ const JobCard = ({ jobData }) => {
         </span>
       </div>
       <Link to={`../viewJobsDetail/${id}`}>
-        <button
-          className="btn-primary w-max"
-          onClick={handleViewBookDetail}
-        >
+        <button className="btn-primary w-max" onClick={handleViewBookDetail}>
           View Detail
         </button>
       </Link>
