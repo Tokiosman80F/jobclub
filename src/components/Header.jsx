@@ -7,7 +7,7 @@ const Header = () => {
   const navItems = [
     {
       name: "Home",
-      to: "/",
+      to: "/home",
       title: "Home",
     },
     {
@@ -31,7 +31,7 @@ const Header = () => {
     <>
       <div className="p-4 mx-auto">
         <div className="flex justify-around items-center">
-          <Link to="/" title="JobClub" className="font-bold text-2xl">
+          <Link to="/home" title="JobClub" className="font-bold text-2xl">
             JobClub
           </Link>
           <ul className="md:flex gap-5 hidden">
